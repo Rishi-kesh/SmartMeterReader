@@ -1,0 +1,31 @@
+<app-nav-menu></app-nav-menu>
+
+<h1 id="tableLabel" style="margin-top:24px">Users</h1>
+<p *ngIf="!userList"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="userList">
+  <thead>
+    <tr>
+      <th>UserName</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>UserType</th>
+      <th>Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userList|paginate: { itemsPerPage: 5, currentPage: p }">
+      <td>{{ user.userName }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.address }}</td>
+      <td>{{user.phoneNumber}}</td>
+      <td>{{user.userType}}</td>
+      <td><a class="btn-primary" (click)="edit(user.id)" style="background-color:azure;cursor:pointer">Edit</a> || <a (click)="unit(user.id)" style="background-color:azure;cursor:pointer">Unit</a></td>
+
+    </tr>
+  </tbody>
+</table>
+<br />
+<pagination-controls (pageChange)="p = $event" style="text-align: center;"></pagination-controls>

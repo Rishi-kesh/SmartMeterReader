@@ -1,0 +1,75 @@
+<div class="row">
+  
+  <div class="col-md-3"></div>
+  <div class="col-md-6" style="margin-top:111px;background-color:azure">
+    <h2 style="color:Blue">Login Form</h2>
+    <div *ngIf="isLoginError" class="control-label">
+      Username or password is Incorrect.
+    </div>
+
+    <div class="login-cover" style="margin-top:44px">
+      <div class="login-cover-image" [ngStyle]="{ 'background-image': 'url(' + this.bg + ')' }">
+      </div>
+      <div class="login-cover-bg"></div>
+      <!--<img src="../../../../wwwroot/dist/92ce9e288f3bc2d83d2b929d73769646.jpg" />-->
+    </div>
+    <!-- begin login -->
+    <div class="login login-v2" data-pageload-addclass="animated fadeIn">
+      <!-- begin brand -->
+      <div class="login-header">
+        <div class="brand">
+          <!--<span class="logo"></span>
+        <b>CRM</b> Admin-->
+
+        </div>
+        <div class="icon">
+          <i class="fa fa-lock"></i>
+        </div>
+      </div>
+      <!-- end brand -->
+      <!-- begin login-content -->
+      <div class="login-content">
+        <form #loginForm="ngForm" (ngSubmit)="saveLogin(userName.value,password.value)" class="margin-bottom-0">
+          <div class="form-group m-b-20" [class.has-error]="userName.invalid && userName.touched">
+            <!--<input type="text" class="form-control form-control-lg" placeholder="Email Address" required />-->
+
+            <input required id="userName" [(ngModel)]="login.userName" placeholder="User Name" name="userName" type="text" class="form-control form-control-lg" #userName="ngModel" />
+            <span class="help-block" *ngIf="userName.invalid && userName.touched">
+              User Name is required
+            </span>
+          </div>
+          <div class="form-group m-b-20" [class.has-error]="password.invalid && password.touched">
+            <!--<input type="password" class="form-control form-control-lg" placeholder="password" required />-->
+
+            <input required id="password" [(ngModel)]="login.password" name="password" placeholder="password" type="password" class="form-control form-control-lg" #password="ngModel" />
+            <span class="help-block" *ngIf="password.invalid && password.touched">
+              Password is required
+            </span>
+
+          </div>
+          <div class="checkbox checkbox-css m-b-20">
+            <input type="checkbox" id="remember_checkbox" />
+            <label for="remember_checkbox">
+              Remember Me
+            </label>
+          </div>
+
+          <div class="login-buttons">
+            <button type="submit" class="btn btn-success btn-block btn-lg" [disabled]="loginForm.invalid">Sign me in</button>
+          </div>
+
+        </form>
+      </div>
+      <!-- end login-content -->
+    </div>
+    <!-- end login -->
+    <ul class="login-bg-list clearfix">
+      <li *ngFor="let list of bgList" [ngClass]="{ 'active': list.active }">
+        <a href="javascript:;" (click)="changeBg(list)" [ngStyle]="{ 'background-image': 'url(' + list.bg + ')' }"></a>
+      </li>
+    </ul>
+
+  </div>
+  <div class=" col-md-3"></div>
+  </div>
+

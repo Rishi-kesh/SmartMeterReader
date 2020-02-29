@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<app-nav-menu></app-nav-menu>
+
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+</head>
+<body>
+  <!--<h3 style="cursor:pointer;float:right" (click)="bill()">Bill Amount</h3>-->
+  <div class=" row">
+    <div class="col-md-12"  *ngIf="unitData">
+      <div class="col-md-5">
+        <h2 style="padding-top:33px" *ngIf="unitData.length>0">
+          Total Unit:{{unitData[0].unites}}
+        </h2>
+      </div>
+      <div *ngIf="unitData.length==0"><h2>Available Balance: 0 </h2></div>
+      <div class="col-md-5" *ngIf="unitData.length>0">
+        <h2>Available Balance:{{unitData[0].price-unitData[0].currentUnit*10}}</h2>
+      </div>
+    </div>
+  </div>
+  <table class="table table-primary">
+    <thead>
+      <tr>
+        <th>UserId</th>
+        <th>Current Unit</th>
+        <th>Created Date</th>
+        <th>Modified Date</th>
+      </tr>
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of unitData">
+        <td>
+          {{item.userId}}
+        </td>
+        <td>
+          {{item.currentUnit}}
+        </td>
+        <td>
+          {{item.createdDate |  date:'medium' }}
+        </td>
+        <td>
+          {{item.modifiedDate |  date:'medium' }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br />
+  <h2>Hours unit</h2>
+  <br />
+  <table class="table table-primary">
+    <thead>
+      <tr>
+        <th>UserId</th>
+        <th>Unit</th>
+        <th>Created Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of unitHistoryData|paginate: { itemsPerPage: 4, currentPage: p }">
+        <td>
+          {{item.userId}}
+        </td>
+        <td>
+          {{item.units}}
+        </td>
+        <td>
+          {{item.createdDate |  date:'medium' }}
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+  <pagination-controls (pageChange)="p = $event"style="text-align: center;"></pagination-controls>
+
+</body>
+</html>

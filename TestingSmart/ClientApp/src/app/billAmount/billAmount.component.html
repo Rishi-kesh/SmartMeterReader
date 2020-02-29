@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<app-nav-menu></app-nav-menu>
+
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+</head>
+<body>
+  
+    <div style="background-color:aquamarine;margin-top:150px;margin-left:300px" class="col-md-5">
+     
+        <h3>Input Amount</h3>
+        <input type="number" [(ngModel)]="totalPrice" placeholder="Enter Amount" name="totalPrice" class="form-control form-control-lg " />
+        <br />
+        <button (click)="payment()" *ngIf="isClient">Payment</button>
+      
+    </div>
+ 
+</body>
+</html>
