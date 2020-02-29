@@ -127,7 +127,7 @@ namespace TestingSmart.Controllers
 
 
 
-
+                var item = 0;
                 var billAmountData = _context.Units.Where(x => x.UserId == userIds.Id).OrderByDescending(x => x.Id).FirstOrDefault();
                 if (billAmountData == null)
                 {
